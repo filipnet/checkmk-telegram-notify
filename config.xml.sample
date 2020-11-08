@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config>
+    <telegram_api_token>TELEGRAM_API_TOKEN_WITHOUT_BOT_PREFIX</telegram_api_token>
+	<telegram_chat_id>TELEGRAM_GROUP_OR_CHAT-ID</telegram_chat_id>
+</config>
