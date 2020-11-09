@@ -63,4 +63,4 @@ Now you can create your own alarm rules in Check_MK.
 No further settings are required for this.
 
 ## LICENSE
-telegram and all individual scripts are under the BSD 3-Clause license unless explicitly noted otherwise. Please refer to the LICENSE
+checkmk-telegram-notify and all individual scripts are under the BSD 3-Clause license unless explicitly noted otherwise. Please refer to the LICENSE
