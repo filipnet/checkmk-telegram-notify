@@ -3,6 +3,16 @@ Telegram has long been one of my real-time communication media. It is obvious to
 
 The following Script is for Check_MK, I have used it exclusively with the RAW version 1.6.0_p18.
 
+## REQUIREMENTS
+In order for Check_MK to send alerts (notifications) to the Telegram Messenger, we need
+
+* a bot
+* a username for the bot
+* an API token
+* a chat ID
+
+There are a lot of good instructions for this on the Internet, so this is not part of this documentation.
+
 ## INSTALLATION
 Change to your Check_MK site user
 ```
