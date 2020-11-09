@@ -3,7 +3,7 @@
 #
 # Script Name   : check_mk_telegram-notify.sh
 # Description   : Send Check_MK notifications by Telegram
-# Author        : https://github.com/filipnet/telegram
+# Author        : https://github.com/filipnet/checkmk-telegram-notify
 # License       : BSD 3-Clause "New" or "Revised" License
 # ======================================================================================
 
