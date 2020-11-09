@@ -38,7 +38,7 @@ HOST_ADDRESS_6=$(grep NOTIFY_HOST_ADDRESS_6 $OUTPUT | cut -d'=' -f2)
 # Create a MESSAGE variable to send to your Telegram bot
 MESSAGE="$HOSTNAME ($HOSTALIAS)%0A"
 MESSAGE+="$WHAT $NOTIFICATIONTYPE%0A%0A"
-if [ $WHAT == "SERVICE" ]; then
+if [[ $WHAT == "SERVICE" ]]; then
         MESSAGE+="$SERVICEDESC%0A"
         MESSAGE+="State changed from $PREVIOUSSERVICEHARDSHORTSTATE to $SERVICESHORTSTATE%0A"
         MESSAGE+="$SERVICEOUTPUT%0A"
