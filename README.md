@@ -17,13 +17,13 @@ cd ~/local/share/check_mk/notifications/
 Download the Telegram notify script from Git repository
 
 ```
-wget https://github.com/filipnet/telegram/blob/main/check_mk_telegram-notify.sh
-wget https://github.com/filipnet/telegram/blob/main/config.xml.sample
+wget https://github.com/filipnet/checkmk-telegram-notify/blob/main/check_mk_telegram-notify.sh
+wget https://github.com/filipnet/checkmk-telegram-notify/blob/main/config.xml.sample
 ```
 or 
 ```
-git clone https://github.com/filipnet/telegram.git
-cd telegram
+git clone https://github.com/filipnet/checkmk-telegram-notify.git
+cd checkmk-telegram-notify
 cp check_mk_telegram-notify.sh /opt/omd/sites/mysite/local/share/check_mk/notifications/
 cp config.xml.sample /opt/omd/sites/mysite/local/share/check_mk/notifications/
 ```
