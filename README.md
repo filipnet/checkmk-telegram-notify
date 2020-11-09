@@ -24,6 +24,12 @@ In order for Check_MK to send alerts (notifications) to the Telegram Messenger, 
 
 There are a lot of good instructions for this on the Internet, so this is not part of this documentation.
 
+Additionally for the XML-based configuration the command line tool ```xmllint``` is used, which requires the following packages on the Linux system:
+```
+apt install libxml2-utils # Debian/Raspbian-based distributions
+yum install libxml2-utils # Redhat/CentOS-based distributions
+```
+
 ## INSTALLATION
 Change to your Check_MK site user
 ```
