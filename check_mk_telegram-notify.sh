@@ -7,13 +7,13 @@
 # License       : BSD 3-Clause "New" or "Revised" License
 # ======================================================================================
 
-CONFIGFILE="${BASH_SOURCE%/*}/config.xml"
 # Telegram API Token
 # Find telegram bot named "@botfarther", type /mybots, select your bot and select "API Token" to see your current token
-TOKEN=$(xmllint --xpath 'string(/config/telegram_api_token)' $CONFIGFILE)
+TOKEN=$NOTIFY_PARAMETER_1
+
 # Telegram Chat-ID or Group-ID
 # Open "https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates" inside your Browser and send a HELLO to your bot, refresh side
-CHAT_ID=$(xmllint --xpath 'string(/config/telegram_chat_id)' $CONFIGFILE)
+CHAT_ID=$NOTIFY_PARAMETER_2
 
 # Write Check_MK output to a temporary file, delete depricated macros and create variable OUTPUT
 env | grep NOTIFY_ | grep -v "This macro is deprecated" | sort > $OMD_ROOT/tmp/telegram.out
