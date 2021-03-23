@@ -1,6 +1,6 @@
 # Check_MK Telegram notification
-<img src="images/telegram_notification_example.png" alt="Telegram notification example" width="400" align="right"/>
-Telegram has long been one of my real-time communication media. It is obvious to output monitoring messages for server and network components as alarm messages. There are several scripts for this on the internet, but most of them are written in Python, many of them have problems with Python3 and its libraries. Instead of spending hours and hours with Python, I decided to use a scripting language I know and write a Linux Bash script for it.
+<img src="images/logo.png" alt="Telegram notification example" width="300" align="right" hspace="30" vspace="20"/>
+Telegram has long been one of my real-time communication media. It is obvious to output monitoring messages for server and network components as alarm messages. There are several scripts for this on the internet, but most of them are written in Python, many of them have problems with Python3 and its libraries. Instead of spending hours and hours with Python, I decided to use a scripting language I know and write a Linux Bash script for it. 
 
 The following Script is for Check_MK, I have used it exclusively with the RAW version 1.6.0_p18.
 
@@ -8,6 +8,7 @@ The following Script is for Check_MK, I have used it exclusively with the RAW ve
 
 - [Check_MK Telegram notification](#check_mk-telegram-notification)
     - [LATEST UPDATE](#latest-update)
+    - [EXAMPLE](#example)
     - [REQUIREMENTS](#requirements)
     - [INSTALLATION](#installation)
     - [CHECK_MK CONFIGURATION](#check_mk-configuration)
@@ -17,6 +18,11 @@ The following Script is for Check_MK, I have used it exclusively with the RAW ve
 
 ## LATEST UPDATE
 The Telegram token (API key) and the chat/group ID are no longer stored in a separate XML file and instead are passed directly by Check_MK as parameters. This offers the possibility to create several notification groups and to use the script universally.
+
+## EXAMPLE
+Notifications are usually sent via a Telegram group. Here is an example of how a Telegram notification is structured.
+
+<img src="images/telegram_notification_example.png" alt="Telegram notification example" width="400"/>
 
 ## REQUIREMENTS
 In order for Check_MK to send alerts (notifications) to the Telegram Messenger, we need
