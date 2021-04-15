@@ -9,11 +9,21 @@
 
 # Telegram API Token
 # Find telegram bot named "@botfarther", type /mybots, select your bot and select "API Token" to see your current token
-TOKEN=${NOTIFY_PARAMETER_1}
+if [ -z ${NOTIFY_PARAMETER_1} ]; then
+        echo "No Telegram token ID provided. Exiting" >&2
+        exit 2
+else
+        TOKEN="${NOTIFY_PARAMETER_1}"
+fi
 
 # Telegram Chat-ID or Group-ID
 # Open "https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates" inside your Browser and send a HELLO to your bot, refresh side
-CHAT_ID=${NOTIFY_PARAMETER_2}
+if [ -z ${NOTIFY_PARAMETER_2} ]; then
+        echo "No Telegram Chat-ID or Group-ID provided. Exiting" >&2
+        exit 2
+else
+        CHAT_ID="${NOTIFY_PARAMETER_2}"
+fi
 
 # Create a MESSAGE variable to send to your Telegram bot
 MESSAGE="${NOTIFY_HOSTNAME} (${NOTIFY_HOSTALIAS})%0A"
@@ -30,7 +40,10 @@ MESSAGE+="%0AIPv4: ${NOTIFY_HOST_ADDRESS_4} %0AIPv6: ${NOTIFY_HOST_ADDRESS_6}%0A
 MESSAGE+="${NOTIFY_SHORTDATETIME}"
 
 # Send message to Telegram bot
-curl -s -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}" >> /dev/null
-
-# End of script
-exit 0
+curl -S -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}"
+if [ $? -ne 0 ]; then
+        echo "Not able to send Telegram message" >&2
+        exit 2
+else
+        exit 0
+fi
