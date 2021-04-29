@@ -25,6 +25,39 @@ else
         CHAT_ID="${NOTIFY_PARAMETER_2}"
 fi
 
+# Privacy settings to anonymize/masking IP addresses
+if [ ${NOTIFY_PARAMETER_3} = "privacy" ]; then
+        # IPv4 IP addresses
+        if [ ${NOTIFY_HOST_ADDRESS_4} ]; then
+                slice="${NOTIFY_HOST_ADDRESS_4}"
+                count=1
+                while [ "$count" -le 4 ]
+                do
+                        declare sec"$count"="${slice%%.*}"
+                        slice="${slice#*.}"
+                        count=$((count+1))
+                done
+                # Adjust the output to your privacy needs here (Details in the readme.md)
+                NOTIFY_HOST_ADDRESS_4="${sec1}.${sec2}.2.${sec4}"
+        fi
+
+        # IPv6 IP addresses
+        if [ ${NOTIFY_HOST_ADDRESS_6} ]; then
+                slice="${NOTIFY_HOST_ADDRESS_6}"
+                count=1
+                while [ "$count" -le 8 ]
+                do
+                        declare sec"$count"="${slice%%:*}"
+                        slice="${slice#*:}"
+                        count=$((count+1))
+                done
+                # Adjust the output to your privacy needs here (Details in the readme.md)
+                NOTIFY_HOST_ADDRESS_6="${sec1}:${sec2}:${sec3}:${sec4}:ffff:ffff:ffff:${sec8}"
+        fi
+else
+        echo "Invalid privacy parameter, check your Check_MK settings." >&2
+fi
+
 # Create a MESSAGE variable to send to your Telegram bot
 MESSAGE="${NOTIFY_HOSTNAME} (${NOTIFY_HOSTALIAS})%0A"
 MESSAGE+="${NOTIFY_WHAT} ${NOTIFY_NOTIFICATIONTYPE}%0A%0A"

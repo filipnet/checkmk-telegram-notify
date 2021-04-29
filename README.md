@@ -7,17 +7,17 @@ The following Script is for Check_MK, I have used it exclusively with the RAW ve
 <!-- TOC -->
 
 - [Check_MK Telegram notification](#check_mk-telegram-notification)
-    - [LATEST UPDATE](#latest-update)
     - [EXAMPLE](#example)
     - [REQUIREMENTS](#requirements)
     - [INSTALLATION](#installation)
     - [CHECK_MK CONFIGURATION](#check_mk-configuration)
+    - [PRIVACY ANONYMIZATION / MASQUERADING](#privacy-anonymization--masquerading)
+    - [PAGER ADDRESS CHAT-ID INSTEAD OF TELEGRAM GROUP-ID](#pager-address-chat-id-instead-of-telegram-group-id)
+    - [TROUBLESHOOTING](#troubleshooting)
+    - [CONTRIBUTION](#contribution)
     - [LICENSE](#license)
 
 <!-- /TOC -->
-
-## LATEST UPDATE
-The Telegram token (API key) and the chat/group ID are no longer stored in a separate XML file and instead are passed directly by Check_MK as parameters. This offers the possibility to create several notification groups and to use the script universally.
 
 ## EXAMPLE
 Notifications are usually sent via a Telegram group. Here is an example of how a Telegram notification is structured.
@@ -87,11 +87,46 @@ omd stop
 omd start
 ```
 
+## PRIVACY ANONYMIZATION / MASQUERADING
+The current version of this script allows you to optionally enable IP anonymization. This gives you the option to comply with your own privacy policy or the recommendations of data protection authorities in certain countries if they prohibit the transmission of the full IP address. This masks IPv4 and IPv6 IP addresses before they are transmitted in a message to the Telegram service.
+
+The activation of the privacy settings is realized directly in the Notification Rules in Check_MK by NOTIFY_PARAMETER_3, here the value "privacy" has to be entered:
+
+<img src="images/notification_rule_modify_privacy.png" alt="Enable privacy settings" width="600"/>
+
+There are certainly different requirements for privacy and masquerading of IP addresses. In the script, the IPv4 IP address is split into the 4 octets, the IPv6 address into the 8 columns. This allows to control __very individually__ which parts of the addresses are sent via Telegram and which are not. Both, placeholders and manipulations are basically possible here. 
+
+The adjustment is done exclusively in the following two lines of the script.
+```
+# Adjust the output to your privacy needs here (Details in the readme.md)
+NOTIFY_HOST_ADDRESS_4="${sec1}.${sec2}.2.${sec4}"
+NOTIFY_HOST_ADDRESS_6="${sec1}:${sec2}:${sec3}:${sec4}:ffff:ffff:ffff:${sec8}"
+```
+
+Explanation for the example configuration above:
+* 192.168.__143__.104 --> 192.168.__2__.104
+* 2001:db8:85a3:8d3:__1319__:__8a2e__:__370__:7348 --> 2001:db8:85a3:8d3:__ffff__:__ffff__:__ffff__:7348
+
+## PAGER ADDRESS (CHAT-ID) INSTEAD OF TELEGRAM GROUP-ID
+A different approach is to use the 'Pager address' field in Check_MK's user properties. This gets exported as $NOTIFY_CONTACTPAGER variable to the script and as such all that's needed is:
+```
+if [ -z ${NOTIFY_CONTACTPAGER} ]; then
+        echo "No pager address provided to be used as Chat-ID. Exiting" >&2
+        exit 2
+else
+        CHAT_ID="${NOTIFY_CONTACTPAGER}"
+fi
+```
+
+## TROUBLESHOOTING
 For more details and troubleshooting with parameters please check:
 
 [Check_MK  Manual > Notifications > Chapter: 11.3. A simple example](https://docs.checkmk.com/latest/en/notifications.html#H1:Real)
 
 [[Feature-Request] Multiple Alert Profiles](https://github.com/filipnet/checkmk-telegram-notify/issues/3)
+
+## CONTRIBUTION
+Thank you for the excellent contributions and additional information @ThomasKaiser, which I have integrated into the README.
 
 ## LICENSE
 checkmk-telegram-notify and all individual scripts are under the BSD 3-Clause license unless explicitly noted otherwise. Please refer to the LICENSE
