@@ -1,5 +1,5 @@
 #!/bin/bash
-# Push Notification (using Telegram)
+# Push Notification with Emojis (using Telegram)
 #
 # Script Name   : check_mk_telegram-notify.sh
 # Description   : Send Check_MK notifications by Telegram
@@ -8,7 +8,7 @@
 # ======================================================================================
 
 # Telegram API Token
-# Find telegram bot named "@botfarther", type /mybots, select your bot and select "API Token" to see your current token
+# Find telegram bot named "@botfather", type /mybots, select your bot and select "API Token" to see your current token
 if [ -z ${NOTIFY_PARAMETER_1} ]; then
         echo "No Telegram token ID provided. Exiting" >&2
         exit 2
@@ -58,9 +58,30 @@ else
         echo "Invalid privacy parameter, check your Check_MK settings." >&2
 fi
 
+# Set an appropriate emoji for the current state
+if [[ ${NOTIFY_WHAT} == "SERVICE" ]]; then
+        STATE="${NOTIFY_SERVICESHORTSTATE}"
+else
+        STATE="${NOTIFY_HOSTSHORTSTATE}"
+fi
+case "${STATE}" in
+    OK|UP)
+        EMOJI="✅ "
+        ;;
+    WARN)
+        EMOJI="⚠ "
+        ;;
+    CRIT|DOWN)
+        EMOJI="🔥 "
+        ;;
+    UNKN)
+        EMOJI="❓ "
+        ;;
+esac
+
 # Create a MESSAGE variable to send to your Telegram bot
 MESSAGE="${NOTIFY_HOSTNAME} (${NOTIFY_HOSTALIAS})%0A"
-MESSAGE+="${NOTIFY_WHAT} ${NOTIFY_NOTIFICATIONTYPE}%0A%0A"
+MESSAGE+="${EMOJI}${NOTIFY_WHAT} ${NOTIFY_NOTIFICATIONTYPE}%0A%0A"
 if [[ ${NOTIFY_WHAT} == "SERVICE" ]]; then
         MESSAGE+="${NOTIFY_SERVICEDESC}%0A"
         MESSAGE+="State changed from ${NOTIFY_PREVIOUSSERVICEHARDSHORTSTATE} to ${NOTIFY_SERVICESHORTSTATE}%0A"
