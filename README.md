@@ -71,7 +71,7 @@ Now you can create your own alarm rules in Check_MK.
 
 First create a clone of your existing mail notification rule
 
-<img src="images/global_notification_rules_create_clone_v2.png" alt="Create clone" width="600"/>
+<img src="images/global_notification_rules_create_clone_v2.png" alt="Create clone" width="100%"/>
 
 * Change the description (e.g. Notify all contacts of a host/service via Telegram)
 * The notification method is "Push Notification (by Telegram)"
@@ -79,7 +79,7 @@ First create a clone of your existing mail notification rule
 * As the first parameter we set the Telegram token ID (without bot-prefix)
 * The second parameter is the Telegram Chat-ID or Telegram Group-ID
 
-<img src="images/create_new_notification_rule_for_telegram_v2.png" alt="Adjust settings" width="600"/>
+<img src="images/create_new_notification_rule_for_telegram_v2.png" alt="Adjust settings" width="100%"/>
 
 ### CHECK_MK VERSION 1.6.0
 Now you can create your own alarm rules in Check_MK.
@@ -88,7 +88,7 @@ Now you can create your own alarm rules in Check_MK.
 
 First create a clone of your existing mail notification rule
 
-<img src="images/global_notification_rules_create_clone.png" alt="Create clone" width="600"/>
+<img src="images/global_notification_rules_create_clone.png" alt="Create clone" width="100%"/>
 
 * Change the description (e.g. Notify all contacts of a host/service via Telegram)
 * The notification method is "Push Notification (by Telegram)"
@@ -96,11 +96,11 @@ First create a clone of your existing mail notification rule
 * As the first parameter we set the Telegram token ID (without bot-prefix)
 * The second parameter is the Telegram Chat-ID or Telegram Group-ID
 
-<img src="images/create_new_notification_rule_for_telegram.png" alt="Adjust settings" width="600"/>
+<img src="images/create_new_notification_rule_for_telegram.png" alt="Adjust settings" width="100%"/>
 
 If everything was ok, you will see your new Notification Rule afterwards
 
-<img src="images/notification_configuration_change.png" alt="Final result" width="600"/>
+<img src="images/notification_configuration_change.png" alt="Final result" width="100%"/>
 
 ### ACTIVATE CHANGES
 To activate it you have to press "1 Change" and "Activate affected"
@@ -123,7 +123,7 @@ The current version of this script allows you to optionally enable IP anonymizat
 
 The activation of the privacy settings is realized directly in the Notification Rules in Check_MK by NOTIFY_PARAMETER_3, here the value "privacy" has to be entered:
 
-<img src="images/notification_rule_modify_privacy.png" alt="Enable privacy settings" width="600"/>
+<img src="images/notification_rule_modify_privacy.png" alt="Enable privacy settings" width="100%"/>
 
 There are certainly different requirements for privacy and masquerading of IP addresses. In the script, the IPv4 IP address is split into the 4 octets, the IPv6 address into the 8 columns. This allows to control __very individually__ which parts of the addresses are sent via Telegram and which are not. Both, placeholders and manipulations are basically possible here. 
 
@@ -152,9 +152,8 @@ fi
 ## TROUBLESHOOTING
 For more details and troubleshooting with parameters please check:
 
-[Check_MK  Manual > Notifications > Chapter: 11.3. A simple example](https://docs.checkmk.com/latest/en/notifications.html#H1:Real)
-
-[[Feature-Request] Multiple Alert Profiles](https://github.com/filipnet/checkmk-telegram-notify/issues/3)
+* [Check_MK  Manual > Notifications > Chapter: 11.3. A simple example](https://docs.checkmk.com/latest/en/notifications.html#H1:Real)
+* [[Feature-Request] Multiple Alert Profiles](https://github.com/filipnet/checkmk-telegram-notify/issues/3)
 
 ## CONTRIBUTIONS
 * Thank you for the excellent code optimization contributions and additional information [ThomasKaiser](https://github.com/ThomasKaiser).
