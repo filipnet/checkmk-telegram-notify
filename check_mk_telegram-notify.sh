@@ -26,7 +26,7 @@ else
 fi
 
 # Privacy settings to anonymize/masking IP addresses
-if [ ${NOTIFY_PARAMETER_3} = "privacy" ]; then
+if [[ ${NOTIFY_PARAMETER_3} == "privacy" ]]; then
         # IPv4 IP addresses
         if [ ${NOTIFY_HOST_ADDRESS_4} ]; then
                 slice="${NOTIFY_HOST_ADDRESS_4}"

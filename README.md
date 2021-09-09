@@ -151,7 +151,7 @@ fi
 
 ## TROUBLESHOOTING
 For more details and troubleshooting with parameters please check:
-
+* Check_MK notification logfile: /omd/sites/{sitename}/var/log/notify.log
 * [Check_MK  Manual > Notifications > Chapter: 11.3. A simple example](https://docs.checkmk.com/latest/en/notifications.html#H1:Real)
 * [[Feature-Request] Multiple Alert Profiles](https://github.com/filipnet/checkmk-telegram-notify/issues/3)
 
