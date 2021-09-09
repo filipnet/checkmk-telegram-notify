@@ -1,5 +1,5 @@
 #!/bin/bash
-# Push Notification with Emojis (using Telegram)
+# Push Notification (using Telegram)
 #
 # Script Name   : check_mk_telegram-notify.sh
 # Description   : Send Check_MK notifications by Telegram
@@ -59,6 +59,7 @@ else
 fi
 
 # Set an appropriate emoji for the current state
+# Feel free to change the emoji to your own taste. This is done by customizing the UTF8 code. Examples here: https://apps.timwhitlock.info/emoji/tables/unicode
 if [[ ${NOTIFY_WHAT} == "SERVICE" ]]; then
         STATE="${NOTIFY_SERVICESHORTSTATE}"
 else
@@ -66,22 +67,22 @@ else
 fi
 case "${STATE}" in
     OK|UP)
-        EMOJI="✅ "
+        EMOJI=$'\xE2\x9C\x85' # white heavy check mark
         ;;
     WARN)
-        EMOJI="⚠ "
+        EMOJI=$'\xE2\x9A\xA0' # warning sign
         ;;
     CRIT|DOWN)
-        EMOJI="🔥 "
+        EMOJI=$'\xF0\x9F\x86\x98' # squared sos
         ;;
     UNKN)
-        EMOJI="❓ "
+        EMOJI=$'\xF0\x9F\x94\x84' # anticlockwise downwards and upwards open circle arrows
         ;;
 esac
 
 # Create a MESSAGE variable to send to your Telegram bot
 MESSAGE="${NOTIFY_HOSTNAME} (${NOTIFY_HOSTALIAS})%0A"
-MESSAGE+="${EMOJI}${NOTIFY_WHAT} ${NOTIFY_NOTIFICATIONTYPE}%0A%0A"
+MESSAGE+="${EMOJI} ${NOTIFY_WHAT} ${NOTIFY_NOTIFICATIONTYPE}%0A%0A"
 if [[ ${NOTIFY_WHAT} == "SERVICE" ]]; then
         MESSAGE+="${NOTIFY_SERVICEDESC}%0A"
         MESSAGE+="State changed from ${NOTIFY_PREVIOUSSERVICEHARDSHORTSTATE} to ${NOTIFY_SERVICESHORTSTATE}%0A"

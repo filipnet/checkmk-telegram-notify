@@ -24,7 +24,7 @@ Telegram has long been one of my real-time communication media. It is obvious to
 
 ## COMPATIBILITY
 - Check_MK RAW version 1.6.0_p18 
-- Check_MK RAW version 2.0.0_p4
+- Check_MK RAW version 2.0.0_p8
 - Should also work with other versions of Check_MK
 
 ## EXAMPLE
@@ -157,7 +157,8 @@ For more details and troubleshooting with parameters please check:
 [[Feature-Request] Multiple Alert Profiles](https://github.com/filipnet/checkmk-telegram-notify/issues/3)
 
 ## CONTRIBUTION
-Thank you for the excellent contributions and additional information @ThomasKaiser, which I have integrated into the README.
+* Thank you for the excellent code optimization contributions and additional information @ThomasKaiser.
+* Best regards to @intelligent-bytes in Bangkok, Thailand and many thanks for adding emojies to the module.
 
 ## LICENSE
 checkmk-telegram-notify and all individual scripts are under the BSD 3-Clause license unless explicitly noted otherwise. Please refer to the LICENSE
