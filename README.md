@@ -17,7 +17,7 @@ Telegram has long been one of my real-time communication media. It is obvious to
         - [PRIVACY ANONYMIZATION / MASQUERADING](#privacy-anonymization--masquerading)
     - [PAGER ADDRESS CHAT-ID INSTEAD OF TELEGRAM GROUP-ID](#pager-address-chat-id-instead-of-telegram-group-id)
     - [TROUBLESHOOTING](#troubleshooting)
-    - [CONTRIBUTION](#contribution)
+    - [CONTRIBUTIONS](#contributions)
     - [LICENSE](#license)
 
 <!-- /TOC -->
@@ -30,7 +30,7 @@ Telegram has long been one of my real-time communication media. It is obvious to
 ## EXAMPLE
 Notifications are usually sent via a Telegram group. Here is an example of how a Telegram notification is structured.
 
-<img src="images/telegram_notification_example.png" alt="Telegram notification example" width="400"/>
+<img src="images/telegram_notification_example.png" alt="Telegram notification example" width="100%"/>
 
 ## REQUIREMENTS
 In order for Check_MK to send alerts (notifications) to the Telegram Messenger, we need
@@ -156,9 +156,9 @@ For more details and troubleshooting with parameters please check:
 
 [[Feature-Request] Multiple Alert Profiles](https://github.com/filipnet/checkmk-telegram-notify/issues/3)
 
-## CONTRIBUTION
-* Thank you for the excellent code optimization contributions and additional information @ThomasKaiser.
-* Best regards to @intelligent-bytes in Bangkok, Thailand and many thanks for adding emojies to the module.
+## CONTRIBUTIONS
+* Thank you for the excellent code optimization contributions and additional information [ThomasKaiser](https://github.com/ThomasKaiser).
+* Best regards to [Jonathan Barratt](https://github.com/reduxionist) in Bangkok and many thanks for adding emojies to the module.
 
 ## LICENSE
 checkmk-telegram-notify and all individual scripts are under the BSD 3-Clause license unless explicitly noted otherwise. Please refer to the LICENSE
