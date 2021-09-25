@@ -92,7 +92,7 @@ else
         MESSAGE+="${NOTIFY_HOSTOUTPUT}%0A"
 fi
 MESSAGE+="%0AIPv4: ${NOTIFY_HOST_ADDRESS_4} %0AIPv6: ${NOTIFY_HOST_ADDRESS_6}%0A"
-MESSAGE+="${NOTIFY_SHORTDATETIME}"
+MESSAGE+="${NOTIFY_SHORTDATETIME} | ${OMD_SITE}"
 
 # Send message to Telegram bot
 curl -S -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}"
