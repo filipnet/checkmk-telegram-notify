@@ -80,6 +80,8 @@ case "${STATE}" in
         ;;
 esac
 
+# The emoji should be displayed with emoji presentation
+EMOJI+=$'\xEF\xB8\x8F'
 # Create a MESSAGE variable to send to your Telegram bot
 MESSAGE="${NOTIFY_HOSTNAME} (${NOTIFY_HOSTALIAS})%0A"
 MESSAGE+="${EMOJI} ${NOTIFY_WHAT} ${NOTIFY_NOTIFICATIONTYPE}%0A%0A"
