@@ -25,7 +25,7 @@ if [ -z ${NOTIFY_PARAMETER_2} ]; then
                 CHAT_ID="${NOTIFY_CONTACT_TELEGRAMCHAT}"
         fi
 else
-        CHAT_ID="${NOTIFY_CONTACT_TELEGRAMCHAT}"
+        CHAT_ID="${NOTIFY_PARAMETER_2}"
 fi
 
 # Privacy settings to anonymize/masking IP addresses
