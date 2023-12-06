@@ -16,6 +16,7 @@ Telegram has long been one of my real-time communication media. It is obvious to
         - [ACTIVATE CHANGES](#activate-changes)
         - [PRIVACY ANONYMIZATION / MASQUERADING](#privacy-anonymization--masquerading)
     - [PAGER ADDRESS CHAT-ID INSTEAD OF TELEGRAM GROUP-ID](#pager-address-chat-id-instead-of-telegram-group-id)
+        - [Custom user attribute](#custom-user-attribute)
     - [TROUBLESHOOTING](#troubleshooting)
     - [CONTRIBUTIONS](#contributions)
     - [LICENSE](#license)
@@ -150,6 +151,20 @@ else
         CHAT_ID="${NOTIFY_CONTACTPAGER}"
 fi
 ```
+
+### Custom user attribute
+You can add a custom user attribute and use it in your script.
+Go TO `Setup>UsersCustom>user attributes` and create a custom attribute named `TELEGRAMCHAT`, do not change the name, you can change the Title and Help Text.
+<img src="images/create_custom_user_attribute.PNG" alt="Custom User attribute creation" width="100%"/>
+
+#### Optional custom macro
+Go To `Setup>Events>Notification configuration>` and edit your notifcation. Add a custom macro.
+Regex : ```\d{5,}```
+The Macro checks for an at least 5 digit long number, if your Chatid differs, you can adjust that, this also ensures that only those with a chatid set up will get notified. (could work also as a whitelist)
+<img src="images/notification_custom_macro.PNG" alt="Custom macro for notification" width="100%"/>
+Edit your user and enter your Group/Chat-ID
+<img src="images/user_add_chat_id.PNG" alt="Custom macro for notification" width="100%"/>
+
 
 ## TROUBLESHOOTING
 For more details and troubleshooting with parameters please check:

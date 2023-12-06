@@ -6,7 +6,6 @@
 # Author        : https://github.com/filipnet/checkmk-telegram-notify
 # License       : BSD 3-Clause "New" or "Revised" License
 # ======================================================================================
-
 # Telegram API Token
 # Find telegram bot named "@botfather", type /mybots, select your bot and select "API Token" to see your current token
 if [ -z ${NOTIFY_PARAMETER_1} ]; then
@@ -19,10 +18,14 @@ fi
 # Telegram Chat-ID or Group-ID
 # Open "https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates" inside your Browser and send a HELLO to your bot, refresh side
 if [ -z ${NOTIFY_PARAMETER_2} ]; then
-        echo "No Telegram Chat-ID or Group-ID provided. Exiting" >&2
-        exit 2
+        if [ -z ${NOTIFY_CONTACT_TELEGRAMCHAT} ]; then
+                echo "No Telegram Chat-ID or Group-ID provided. Exiting" >&2
+                exit 2
+        else
+                CHAT_ID="${NOTIFY_CONTACT_TELEGRAMCHAT}"
+        fi
 else
-        CHAT_ID="${NOTIFY_PARAMETER_2}"
+        CHAT_ID="${NOTIFY_CONTACT_TELEGRAMCHAT}"
 fi
 
 # Privacy settings to anonymize/masking IP addresses
@@ -55,7 +58,9 @@ if [[ ${NOTIFY_PARAMETER_3} == "privacy" ]]; then
                 NOTIFY_HOST_ADDRESS_6="${sec1}:${sec2}:${sec3}:${sec4}:ffff:ffff:ffff:${sec8}"
         fi
 else
-        echo "Invalid privacy parameter, check your Check_MK settings." >&2
+        if [ ! -z ${NOTIFY_PARAMETER_3} ]; then
+                echo "Invalid privacy parameter, check your Check_MK settings." >&2
+        fi
 fi
 
 # Set an appropriate emoji for the current state
@@ -97,9 +102,10 @@ MESSAGE+="%0AIPv4: ${NOTIFY_HOST_ADDRESS_4} %0AIPv6: ${NOTIFY_HOST_ADDRESS_6}%0A
 MESSAGE+="${NOTIFY_SHORTDATETIME} | ${OMD_SITE}"
 
 # Send message to Telegram bot
-curl -S -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}"
+response=$(curl -S -s -q -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}")
 if [ $? -ne 0 ]; then
         echo "Not able to send Telegram message" >&2
+        echo $response >&2
         exit 2
 else
         exit 0
