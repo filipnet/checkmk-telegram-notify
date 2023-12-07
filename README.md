@@ -16,7 +16,8 @@ Telegram has long been one of my real-time communication media. It is obvious to
         - [ACTIVATE CHANGES](#activate-changes)
         - [PRIVACY ANONYMIZATION / MASQUERADING](#privacy-anonymization--masquerading)
     - [PAGER ADDRESS CHAT-ID INSTEAD OF TELEGRAM GROUP-ID](#pager-address-chat-id-instead-of-telegram-group-id)
-        - [Custom user attribute](#custom-user-attribute)
+        - [CUSTOM USER ATTRIBUTE](#custom-user-attribute)
+        - [CUSTOM MACRO OPTIONAL](#custom-macro-optional)
     - [TROUBLESHOOTING](#troubleshooting)
     - [CONTRIBUTIONS](#contributions)
     - [LICENSE](#license)
@@ -67,6 +68,7 @@ chmod +x check_mk_telegram-notify.sh
 ```
 
 ## CHECK_MK CONFIGURATION
+
 ### CHECK_MK VERSION 2.0.0 AND ABOVE
 Now you can create your own alarm rules in Check_MK.
 
@@ -152,26 +154,32 @@ else
 fi
 ```
 
-### Custom user attribute
+### CUSTOM USER ATTRIBUTE
 You can add a custom user attribute and use it in your script.
-Go TO `Setup>UsersCustom>user attributes` and create a custom attribute named `TELEGRAMCHAT`, do not change the name, you can change the Title and Help Text.
-<img src="images/create_custom_user_attribute.PNG" alt="Custom User attribute creation" width="100%"/>
+Go TO `Setup > UsersCustom > user attributes` and create a custom attribute named `TELEGRAMCHAT`, do not change the name, you can change the Title and Help Text.
+<img src="images/create_custom_user_attribute.png" alt="Custom User attribute creation" width="100%"/>
 
-#### Optional custom macro
-Go To `Setup>Events>Notification configuration>` and edit your notifcation. Add a custom macro.
+### CUSTOM MACRO (OPTIONAL)
+Go To `Setup > Events > Notification configuration>` and edit your notifcation. Add a custom macro.
 
-Regex : ```\d{5,}```
+This pattern will accept numbers with or without an optional minus sign and requires a minimum of 5 digits.:
+Regex : ```^-?\d{5,}$```
+
+- Breakdown:
+```
+^: Start of the string.
+-?: An optional minus sign.
+\d{5,}: Five or more consecutive digits.
+$: End of the string.
+```
 
 The Macro checks for an at least 5 digit long number, if your Chatid differs, you can adjust that, this also ensures that only those with a chatid set up will get notified. (could work also as a whitelist)
 
-<img src="images/notification_custom_macro.PNG" alt="Custom macro for notification" width="100%"/>
-
+<img src="images/notification_custom_macro.png" alt="Custom macro for notification" width="100%"/>
 
 Edit your user and enter your Group/Chat-ID
 
-
-<img src="images/user_add_chat_id.PNG" alt="Custom macro for notification" width="100%"/>
-
+<img src="images/user_add_chat_id.png" alt="Custom macro for notification" width="100%"/>
 
 ## TROUBLESHOOTING
 For more details and troubleshooting with parameters please check:
@@ -182,6 +190,7 @@ For more details and troubleshooting with parameters please check:
 ## CONTRIBUTIONS
 * Thank you for the excellent code optimization contributions and additional information [ThomasKaiser](https://github.com/ThomasKaiser).
 * Best regards to [Jonathan Barratt](https://github.com/reduxionist) in Bangkok and many thanks for adding emojies to the module.
+* Many thanks to [progamernoob](https://github.com/progamernoob) for the contributions and enhancements to custom user attributes and macros.
 
 ## LICENSE
 checkmk-telegram-notify and all individual scripts are under the BSD 3-Clause license unless explicitly noted otherwise. Please refer to the LICENSE
