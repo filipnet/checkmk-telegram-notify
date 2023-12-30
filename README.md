@@ -86,6 +86,8 @@ First create a clone of your existing mail notification rule
 
 <img src="images/create_new_notification_rule_for_telegram_v2.png" alt="Adjust settings" width="100%"/>
 
+Referring to #6 and #15 at this point the note that initially only one field is displayed, further fields are only displayed after the first field has been filled.
+
 ### CHECK_MK VERSION 1.6.0
 Now you can create your own alarm rules in Check_MK.
 
