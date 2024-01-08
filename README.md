@@ -28,7 +28,7 @@ Telegram has long been one of my real-time communication media. It is obvious to
 - Check_MK RAW version 1.6.0_p18 
 - Check_MK RAW version 2.0.0_p8 to 2.0.0p31
 - Check_MK RAW version 2.1.0p30
-- Check_MK RAW version 2.2.0p5 for RedHat/CentOS 8 and 9
+- Check_MK RAW version 2.2.0p17 for RedHat/CentOS/AlmaLinux/RockyLinux 8 and 9
 - Should also work with other versions of Check_MK
 
 ## EXAMPLE
