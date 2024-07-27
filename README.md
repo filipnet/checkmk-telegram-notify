@@ -58,14 +58,19 @@ Change to the notification directory
 cd ~/local/share/check_mk/notifications/
 ```
 
-Download the Telegram notify script from Git repository
+Download the Telegram notify script from Git repository (new subfolder will be created)
 ```
-git clone https://github.com/filipnet/checkmk-telegram-notify.git .
+git clone https://github.com/filipnet/checkmk-telegram-notify.git
 ```
 
 Give the script execution permissions
 ```
-chmod +x check_mk_telegram-notify.sh
+chmod +x checkmk-telegram-notify/check_mk_telegram-notify.sh
+```
+
+Create Symlink to enable the Plugin
+```
+ln -s checkmk-telegram-notify/check_mk_telegram-notify.sh check_mk_telegram-notify.sh
 ```
 
 ## CHECK_MK CONFIGURATION
