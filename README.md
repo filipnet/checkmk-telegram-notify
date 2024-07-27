@@ -73,6 +73,13 @@ Create Symlink to enable the Plugin
 ln -s checkmk-telegram-notify/check_mk_telegram-notify.sh check_mk_telegram-notify.sh
 ```
 
+## UPDATE EXISTING INSTALLATION
+```
+su - mysite
+cd ~/local/share/check_mk/notifications/checkmk-telegram-notify
+git pull
+```
+
 ## CHECK_MK CONFIGURATION
 
 ### CHECK_MK VERSION 2.0.0 AND ABOVE
