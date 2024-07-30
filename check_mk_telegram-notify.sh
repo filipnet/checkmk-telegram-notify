@@ -102,11 +102,12 @@ MESSAGE+="%0AIPv4: ${NOTIFY_HOST_ADDRESS_4} %0AIPv6: ${NOTIFY_HOST_ADDRESS_6}%0A
 MESSAGE+="${NOTIFY_SHORTDATETIME} | ${OMD_SITE}"
 
 # Send message to Telegram bot
-response=$(curl -S -s -q -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}")
+response=$(curl -S -s -q --connect-timeout 5 -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}")
 if [ $? -ne 0 ]; then
         echo "Not able to send Telegram message" >&2
         echo $response >&2
         exit 2
 else
+        echo "Telegramm message send sucessfull" >&2
         exit 0
 fi
