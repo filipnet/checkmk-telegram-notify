@@ -206,6 +206,7 @@ For more details and troubleshooting with parameters please check:
 * Thank you for the excellent code optimization contributions and additional information [ThomasKaiser](https://github.com/ThomasKaiser).
 * Best regards to [Jonathan Barratt](https://github.com/reduxionist) in Bangkok and many thanks for adding emojies to the module.
 * Many thanks to [progamernoob](https://github.com/progamernoob) for the contributions and enhancements to custom user attributes and macros.
+* Big thanks to [Sebastian Hayer-Lutz](https://github.com/Elompenta) for the idea with the symlinks and thereby supporting several plugins, as well as the timeout optimization.
 
 ## LICENSE
 checkmk-telegram-notify and all individual scripts are under the BSD 3-Clause license unless explicitly noted otherwise. Please refer to the LICENSE
