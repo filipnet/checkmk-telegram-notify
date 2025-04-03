@@ -15,7 +15,7 @@ else
         TOKEN="${NOTIFY_PARAMETER_1}"
 fi
 
-# Telegram Chat-ID or Group-ID
+# Telegram Chat-ID or Group-ID (and optional Thread-ID)
 # Open "https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates" inside your Browser and send a HELLO to your bot, refresh side
 if [ -z ${NOTIFY_PARAMETER_2} ]; then
         if [ -z ${NOTIFY_CONTACT_TELEGRAMCHAT} ]; then
@@ -25,7 +25,11 @@ if [ -z ${NOTIFY_PARAMETER_2} ]; then
                 CHAT_ID="${NOTIFY_CONTACT_TELEGRAMCHAT}"
         fi
 else
-        CHAT_ID="${NOTIFY_PARAMETER_2}"
+        CHAT_ID="${NOTIFY_PARAMETER_2%:*}"
+        THREAD_ID="${NOTIFY_PARAMETER_2#*:}"
+        if [ "${CHAT_ID}" = "${THREAD_ID}" ]; then
+                THREAD_ID=""
+        fi
 fi
 
 # Privacy settings to anonymize/masking IP addresses
@@ -102,7 +106,7 @@ MESSAGE+="%0AIPv4: ${NOTIFY_HOST_ADDRESS_4} %0AIPv6: ${NOTIFY_HOST_ADDRESS_6}%0A
 MESSAGE+="${NOTIFY_SHORTDATETIME} | ${OMD_SITE}"
 
 # Send message to Telegram bot
-response=$(curl -S -s -q --connect-timeout 5 -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d text="${MESSAGE}")
+response=$(curl -S -s -q --connect-timeout 5 -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" -d chat_id="${CHAT_ID}" -d message_thread_id="${THREAD_ID}" -d text="${MESSAGE}")
 if [ $? -ne 0 ]; then
         echo "Not able to send Telegram message" >&2
         echo $response >&2
