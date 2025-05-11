@@ -112,6 +112,6 @@ if [ $? -ne 0 ]; then
         echo $response >&2
         exit 2
 else
-        echo "Telegramm message send sucessfull" >&2
+        echo "Telegram message sent sucessfully" >&2
         exit 0
 fi
