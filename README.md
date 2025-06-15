@@ -7,24 +7,24 @@
 
 <!-- TOC -->
 
-- [Check_MK Telegram notification](#check_mk-telegram-notification)
-    - [COMPATIBILITY](#compatibility)
-    - [EXAMPLE](#example)
-    - [REQUIREMENTS](#requirements)
-    - [INSTALLATION](#installation)
-    - [UPDATE EXISTING INSTALLATION](#update-existing-installation)
-    - [CHECK_MK CONFIGURATION](#check_mk-configuration)
-        - [ACTIVATE CHANGES](#activate-changes)
-        - [TEST NOTIFICATIONS](#test-notifications)
-    - [OPTIONAL FEATURES](#optional-features)
-        - [USE OF TELEGRAM TOPICS/THREADS](#use-of-telegram-topicsthreads)
-        - [PRIVACY ANONYMIZATION / MASQUERADING](#privacy-anonymization--masquerading)
-        - [CUSTOM USER ATTRIBUTES](#custom-user-attributes)
-        - [CUSTOM MACRO](#custom-macro)
-        - [PAGER ADDRESS CHAT-ID INSTEAD OF TELEGRAM GROUP-ID](#pager-address-chat-id-instead-of-telegram-group-id)
-    - [TROUBLESHOOTING](#troubleshooting)
-    - [CONTRIBUTIONS](#contributions)
-    - [LICENSE](#license)
+- [Check\_MK Telegram notification](#check_mk-telegram-notification)
+  - [COMPATIBILITY](#compatibility)
+  - [EXAMPLE](#example)
+  - [REQUIREMENTS](#requirements)
+  - [INSTALLATION](#installation)
+  - [UPDATE EXISTING INSTALLATION](#update-existing-installation)
+  - [CHECK\_MK CONFIGURATION](#check_mk-configuration)
+    - [ACTIVATE CHANGES](#activate-changes)
+    - [TEST NOTIFICATIONS](#test-notifications)
+  - [OPTIONAL FEATURES](#optional-features)
+    - [USE OF TELEGRAM TOPICS/THREADS](#use-of-telegram-topicsthreads)
+    - [PRIVACY ANONYMIZATION / MASQUERADING](#privacy-anonymization--masquerading)
+    - [CUSTOM USER ATTRIBUTES](#custom-user-attributes)
+    - [CUSTOM MACRO](#custom-macro)
+    - [PAGER ADDRESS (CHAT-ID) INSTEAD OF TELEGRAM GROUP-ID](#pager-address-chat-id-instead-of-telegram-group-id)
+  - [HELP \& TROUBLESHOOTING GUIDE](#help--troubleshooting-guide)
+  - [CONTRIBUTIONS](#contributions)
+  - [LICENSE](#license)
 
 <!-- /TOC -->
 
@@ -33,7 +33,7 @@
 Understanding compatibility ensures that the plugin works seamlessly with your specific Check_MK version and environment.
 
 - Check_MK RAW version 1.6.0p18 
-- Check_MK RAW version 2.3.0p27 for RedHat/CentOS/AlmaLinux/RockyLinux 8 and 9
+- Check_MK RAW version 2.4.0p4 for RedHat/CentOS/AlmaLinux/RockyLinux 8 and 9
 - Should also work with other versions of Check_MK
 
 ## EXAMPLE
@@ -236,12 +236,9 @@ fi
 
 <img src="images/notification_custom_macro.png" alt="Custom macro for notification" width="100%"/>
 
-## TROUBLESHOOTING
+## HELP & TROUBLESHOOTING GUIDE
 
-For more details and troubleshooting with parameters please check:
-* Check_MK notification logfile: ```tail -f /omd/sites/{sitename}/var/log/notify.log```
-* [Check_MK  Manual > Notifications > Chapter: 11.3. A simple example](https://docs.checkmk.com/latest/en/notifications.html#H1:Real)
-* [[Feature-Request] Multiple Alert Profiles](https://github.com/filipnet/checkmk-telegram-notify/issues/3)
+You can find further information and assistance in the [HELP.md](HELP.md)
 
 ## CONTRIBUTIONS
 
