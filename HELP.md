@@ -1,8 +1,8 @@
-# HELP & TROUBLESHOOTING GUIDE
+# Help & Troubleshooting Guide
 
 Having trouble getting Checkmk Telegram notifications to work? This guide will help you identify and resolve common issues.
 
-## QUICK CHECKLIST
+## Quick Checklist
 
 Before diving into advanced troubleshooting, ensure you have checked the following:
 
@@ -19,7 +19,7 @@ Before diving into advanced troubleshooting, ensure you have checked the followi
     - Run: `chmod +x check_mk_telegram-notify.sh`
 - You have followed the steps in the [README instructions](./README.md#check_mk-configuration).
 
-## VALIDATE NOTIFICATION (DRY-RUN)
+## Validate Notification (Dry-run)
 
 To verify your Telegram bot can send messages independently of Checkmk, use this direct API call:
 
@@ -39,7 +39,7 @@ This test confirms:
 - Host/container has internet access
 - A JSON response with `"ok":true` means the message was sent
 
-## LOGFILE ANALYSIS
+## Logfile analysis
 
 Check the Checkmk notification log for error messages. Replace `{sitename}` with your actual site name:
 
@@ -47,7 +47,7 @@ Check the Checkmk notification log for error messages. Replace `{sitename}` with
 tail -f /omd/sites/{sitename}/var/log/notify.log
 ```
 
-## REFERENCES AND DOCUMENTATION
+## References and documentations
 
 For more troubleshooting and examples, see:
 

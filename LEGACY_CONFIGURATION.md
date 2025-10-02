@@ -1,4 +1,4 @@
-### CONFIGRURATION CHECK_MK VERSION 1.6.0
+### Configuration Checkmk version 1.6.0
 
 Now you can create your own alarm rules in Check_MK.
 
